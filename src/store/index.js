@@ -6,7 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
   query:'',
-  youtubePrevPage:'AAAAAA',
+  youtubePreviousPage:'AAAAAA',
+  youtubeCurrentPage:'AAAAAA',
   youtubeNextPage:'AAAAAA'
 
 }
@@ -19,8 +20,12 @@ const reducer = (state = initialState,action) => {
         return Object.assign({}, state, {query: action.value})
       case 'NEXT_PAGE_SET':
         return Object.assign({}, state, {youtubeNextPage: action.value})
+      case 'PREV_PAGE_SET':
+        return Object.assign({}, state, {youtubePreviousPage: action.value})
       case 'NEXT_PAGE':
-        return Object.assign({}, state, {youtubePrevPage: state.youtubeNextPage})
+        return Object.assign({}, state, {youtubeCurrentPage: state.youtubeNextPage})
+      case 'PREVIOUS_PAGE':
+        return Object.assign({}, state, {youtubeCurrentPage: state.youtubePreviousPage})
       default:
         return state;
     }

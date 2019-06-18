@@ -25,8 +25,8 @@ import VideoRow from './bodyRow'
       if(prevProps.query !== '')
         {
         const query = prevProps.query
-        const API_KEY = 'AIzaSyD2Ea2_V4Ys1RvYhlO2CwLUP5f7necs_K0'
-        const pageToken = prevProps.youtubePrevPage
+        const API_KEY = 'AIzaSyAOq-W4fK8TF_H9eotd5LALr_BP5EB7ArU'
+        const pageToken = prevProps.youtubeCurrentPage
         this.performSearch(API_KEY,query,pageToken,prevProps)
         }
       return null;
@@ -41,13 +41,19 @@ import VideoRow from './bodyRow'
      fetch(urlString)
        .then(function(response) {return response.json(); })
        .then(function(data){
+            if(data.prevPageToken)
+              {
+              console.log('----------------->',data.prevPageToken)
+              props.prev_page_set(data.prevPageToken)
+
+              }
             let videoRows = []
             data.items.forEach((video) => {
             const videoRow = <VideoRow  key={video.snippet.title} video={video}/>
             videoRows.push(videoRow)
           })
             this.setState({rows:videoRows,nextPageToken:data.nextPageToken})
-            props.next_page_set(this.state.nextPageToken)
+            props.next_page_set(data.nextPageToken)
        }.bind(this))
 
    }
@@ -67,7 +73,7 @@ import VideoRow from './bodyRow'
 const mapStateToProps = (state) => {
   return{
     query:state.query,
-    youtubePrevPage:state.youtubePrevPage
+    youtubeCurrentPage:state.youtubeCurrentPage
   }
 }
 
@@ -76,6 +82,9 @@ const mapDispatchToProps = (dispatch) => {
     return{
       next_page_set:(page) => {
         dispatch({type:'NEXT_PAGE_SET',value:page})
+    },
+      prev_page_set:(page) => {
+        dispatch({type:'PREV_PAGE_SET',value:page})
     },
   }
 }

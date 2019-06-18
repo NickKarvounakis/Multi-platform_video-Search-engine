@@ -81,8 +81,8 @@ const ExpansionPanelDetails = withStyles(theme => ({
             <Typography variant="h6">Pages</Typography>
             <Grid container direction="row">
               <Grid item>
-                <button onClick={() => {props.turn_page()}}>1</button>
-                <button onClick={() => {props.turn_page()}}>2</button>
+                <button onClick={() => {props.turn_page2()}}>PREV</button>
+                <button onClick={() => {props.turn_page()}}>NEXT</button>
               </Grid>
             </Grid >
           </Grid>
@@ -117,7 +117,9 @@ const mapDispatchToProps = (dispatch) => {
     return{
       turn_page:() => {
         dispatch({type:'NEXT_PAGE'})
-    },
+    },turn_page2:() => {
+      dispatch({type:'PREVIOUS_PAGE'})
+  },
   }
 }
 
