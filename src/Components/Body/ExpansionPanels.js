@@ -62,7 +62,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
     <div>
       <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Collapsible Group Item #1</Typography>
+          <Grid container direction="row" justify="center" alignItems="center"><img src="./vimeo.svg" alt="youtube" height="50" width="50"/><Typography variant="h6">Vimeo</Typography></Grid>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
             <VimeoBody />
@@ -70,7 +70,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
-          <img src="./youtubecv.png" alt="youtube" height="30" /><Typography variant="h6">Youtube</Typography>
+          <Grid container direction="row" justify="center" alignItems="center"><img src="./youtubecv.png" alt="youtube" height="30" /><Typography variant="h6" style={{marginLeft:'0.2em'}}>Youtube</Typography></Grid>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid container direction="column">

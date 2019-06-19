@@ -87,9 +87,41 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
       background-position: 100% center;
 
 }
+/* Icons spin */
+.spin{
+  transition: all .5s;
+}
+
+.spin:hover{
+  transform: scale(1.2) rotate(360deg);
+}
 
 
+.spin2{
+  transition:all .2s;
+}
 
+.spin2:hover{
+  transform: scale(1.5) ;
+}
+
+.icon{
+  width:30px;
+  height:30px;
+}
+
+/* END */
+
+/* Anchor no styling */
+.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
 
 
 @keyframes App-logo-spin {
