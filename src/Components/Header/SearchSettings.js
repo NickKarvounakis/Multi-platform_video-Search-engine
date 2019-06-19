@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
 
 //Material UI Imports
 import Box from '@material-ui/core/Box';
@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 
 
-export default function Search_bar_settings(){
+function Search_bar_settings(props){
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: true,
@@ -17,6 +17,8 @@ export default function Search_bar_settings(){
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
+    if(name === 'checkedB')
+      props.youtube_trigger()
   };
 
     return(
@@ -32,7 +34,7 @@ export default function Search_bar_settings(){
         label="Youtube"
       />
       <FormControlLabel
-        control={ <Checkbox  checked={state.checkedB}   onChange={handleChange('checkedB')}  value="checkedB"  color="primary"   /> }
+        control={ <Checkbox  checked={state.checkedF}   onChange={handleChange('checkedF')}  value="checkedF"  color="primary"   /> }
         label="Dailymotion"
       />
       </Box>
@@ -40,3 +42,14 @@ export default function Search_bar_settings(){
       </div>
     )
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+      youtube_trigger:() => {
+        dispatch({type:'YOUTUBE_TRIGGER'})
+    }
+  }
+}
+
+export default connect(null,mapDispatchToProps)(Search_bar_settings)

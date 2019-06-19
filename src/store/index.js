@@ -6,6 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
   query:'',
+  youtubeInclude:true,
+  vimeoInclude:true,
   youtubePreviousPage:'AAAAAA',
   youtubeCurrentPage:'AAAAAA',
   youtubeNextPage:'AAAAAA'
@@ -16,6 +18,8 @@ const initialState = {
 const reducer = (state = initialState,action) => {
     console.log('reducer',action)
     switch(action.type){
+      case 'YOUTUBE_TRIGGER':
+        return Object.assign({}, state, {youtubeInclude: !state.youtubeInclude})
       case 'SUBMIT_QUERY':
         return Object.assign({}, state, {query: action.value})
       case 'NEXT_PAGE_SET':

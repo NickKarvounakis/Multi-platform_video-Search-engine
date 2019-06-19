@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
-import Results_body from './body.js'
+import Results_body from './youtube/youtube-body'
+import VimeoBody from './Vimeo/vimeo-body'
 
 const ExpansionPanel = withStyles({
   root: {
@@ -64,11 +65,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
           <Typography>Collapsible Group Item #1</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+            <VimeoBody />
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>

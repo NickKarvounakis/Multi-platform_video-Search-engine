@@ -6,7 +6,7 @@ import store from './store/'
 // JS FILE Imports
 
 import Header from './Components/Header/body.js'
-import Results_body from './Components/Body/body.js'
+import Results_body from './Components/Body/youtube/youtube-body.js'
 import ExpansionPanel from './Components/Body/ExpansionPanels.js'
 
 function App() {

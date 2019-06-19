@@ -10,7 +10,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
 // JS File Imports
-import VideoRow from './bodyRow'
+import VideoRow from './youtube-grid'
 
  class Results_body extends Component{
 
@@ -22,7 +22,7 @@ import VideoRow from './bodyRow'
 
 
     componentWillReceiveProps(prevProps, nextProps){
-      if(prevProps.query !== '')
+      if(prevProps.query !== '' && prevProps.youtubeInclude)
         {
         const query = prevProps.query
         const API_KEY = 'AIzaSyAOq-W4fK8TF_H9eotd5LALr_BP5EB7ArU'
@@ -36,7 +36,7 @@ import VideoRow from './bodyRow'
 
 // xdOykEJSXIg
    performSearch(searchTerm,query,pageToken,props){
-     const urlString = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&pageToken=${pageToken}&q=${query}&key=${searchTerm}`
+     const urlString = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&pageToken=${pageToken}&q=${query}&key=${searchTerm}`
      console.log(urlString)
      fetch(urlString)
        .then(function(response) {return response.json(); })
@@ -73,6 +73,7 @@ import VideoRow from './bodyRow'
 const mapStateToProps = (state) => {
   return{
     query:state.query,
+    youtubeInclude:state.youtubeInclude,
     youtubeCurrentPage:state.youtubeCurrentPage
   }
 }
