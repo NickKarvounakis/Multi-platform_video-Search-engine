@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 
 
 //MATERIAL UI Imports
-import Typography from '@material-ui/core/Typography';
-import Checkbox from '@material-ui/core/Checkbox';
 
- class Search_bar extends Component{
+
+ class Searchbar extends Component{
 
    constructor(){
      super()
@@ -61,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Search_bar)
+export default connect(mapStateToProps,mapDispatchToProps)(Searchbar)

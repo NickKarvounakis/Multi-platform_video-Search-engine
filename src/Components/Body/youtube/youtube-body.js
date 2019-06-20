@@ -2,17 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // Material UI Imports
-import Typography from '@material-ui/core/Typography';
+
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+
 
 // JS File Imports
 import VideoRow from './youtube-grid'
 
- class Results_body extends Component{
+ class ResultsBody extends Component{
 
    constructor(){
      super()
@@ -90,4 +88,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)( Results_body)
+export default connect(mapStateToProps,mapDispatchToProps)( ResultsBody)

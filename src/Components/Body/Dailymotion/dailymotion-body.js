@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 //JS File Imports
-import VimeoRow from './vimeo-grid'
+import DailymotionRow from './dailymotion-grid'
 
 
 // Material UI File Imports
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
-
-class VimeoBody extends React.Component {
+class DailymotionBody extends React.Component {
 
   constructor(){
     super()
@@ -20,11 +18,10 @@ class VimeoBody extends React.Component {
 
    componentWillReceiveProps(prevProps, nextProps){
      console.log('DIFFERENT')
-     if(prevProps.query !== '' && prevProps.vimeoInclude)
+     if(prevProps.query !== '' )
        {
        const query = prevProps.query
-       const API_KEY = 'a413b1fabcb502808642ab2fc7c35255'
-       this.performSearch(API_KEY,query,prevProps)
+       this.performSearch(query,prevProps)
        }
      return null;
   }
@@ -32,17 +29,17 @@ class VimeoBody extends React.Component {
 
 
 // xdOykEJSXIg
-  performSearch(API,query,props){
-    const urlString = `https://api.vimeo.com/videos?query=${query}&access_token=${API}`
+  performSearch(query,props){
+    const urlString = `https://api.dailymotion.com/videos?search=${query}&page=1`
     console.log(urlString)
     fetch(urlString)
       .then(function(response) {return response.json(); })
       .then(function(data){
         console.log(data)
         let videoRows = []
-        data.data.forEach((video) => {
+        data.list.forEach((video) => {
           console.log(video)
-          const videoRow = <VimeoRow video={video} />
+          const videoRow = <DailymotionRow video={video} />
           videoRows.push(videoRow)
         })
                     this.setState({rows:videoRows})
@@ -65,7 +62,6 @@ class VimeoBody extends React.Component {
 const mapStateToProps = (state) => {
  return{
    query:state.query,
-   vimeoInclude:state.vimeoInclude
  }
 }
 
@@ -81,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
  }
 }
 
-export default connect(mapStateToProps,null)( VimeoBody)
+export default connect(mapStateToProps,null)( DailymotionBody)

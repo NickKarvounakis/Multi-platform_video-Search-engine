@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 
 
-function Search_bar_settings(props){
+function SearchbarSettings(props){
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: true,
@@ -19,6 +19,8 @@ function Search_bar_settings(props){
     setState({ ...state, [name]: event.target.checked });
     if(name === 'checkedB')
       props.youtube_trigger()
+    if(name === 'checkedA')
+      props.vimeo_trigger()
   };
 
     return(
@@ -48,8 +50,11 @@ const mapDispatchToProps = (dispatch) => {
     return{
       youtube_trigger:() => {
         dispatch({type:'YOUTUBE_TRIGGER'})
+      },
+      vimeo_trigger:() => {
+        dispatch({type:'VIMEO_TRIGGER'})
     }
   }
 }
 
-export default connect(null,mapDispatchToProps)(Search_bar_settings)
+export default connect(null,mapDispatchToProps)(SearchbarSettings)

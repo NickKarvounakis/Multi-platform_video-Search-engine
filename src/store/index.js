@@ -20,6 +20,8 @@ const reducer = (state = initialState,action) => {
     switch(action.type){
       case 'YOUTUBE_TRIGGER':
         return Object.assign({}, state, {youtubeInclude: !state.youtubeInclude})
+      case 'VIMEO_TRIGGER':
+        return Object.assign({}, state, {vimeoInclude: !state.vimeoInclude})        
       case 'SUBMIT_QUERY':
         return Object.assign({}, state, {query: action.value})
       case 'NEXT_PAGE_SET':

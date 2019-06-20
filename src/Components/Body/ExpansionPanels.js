@@ -7,8 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
-import Results_body from './youtube/youtube-body'
+import ResultsBody from './youtube/youtube-body'
 import VimeoBody from './Vimeo/vimeo-body'
+import DailymotionBody from './Dailymotion/dailymotion-body.js'
 
 const ExpansionPanel = withStyles({
   root: {
@@ -74,7 +75,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid container direction="column">
-            <Results_body />
+            <ResultsBody />
             <Typography variant="h6">Pages</Typography>
             <Grid container direction="row">
               <Grid item>
@@ -87,14 +88,10 @@ const ExpansionPanelDetails = withStyles(theme => ({
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
+          <Grid container direction="row" justify="center" alignItems="center"><img src="./dailymotion.svg" alt="youtube" height="30" /></Grid>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+          <DailymotionBody />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
@@ -103,11 +100,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
 
 
 
-const mapStateToProps = (state) => {
-  return{
-    query:state.query
-  }
-}
+
 
 
 const mapDispatchToProps = (dispatch) => {
